@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hanoi</title>
+    <link rel="stylesheet" href="hanoi.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/element-ui@2.11.1/lib/index.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/element-ui@2.11.1/lib/theme-chalk/index.css">
+
+</head>
+<body>
+    <div id="app">
+        <div class="newgame-panel">
+            <el-input v-model="level" placeholder="圆盘个数，最大为6" :max="6"></el-input>
+            <el-button type="primary" @click="handler">初始化</el-button>
+        </div>
+        <div class="counter">
+            已移动<span>0</span>步
+        </div>
+        <div id="tower-container">
+            <div class="tower">
+                <div class="axis"></div>
+            </div>
+            <div class="tower">
+                <div class="axis"></div>
+            </div>
+            <div class="tower">
+                <div class="axis"></div>
+            </div>
+            <div class="tower">
+                <div class="axis"></div>
+            </div>
+        </div>
+        <div class="button-wrapper">
+            <el-button id="pre">回退一步</el-button>
+            <el-button id="next">下一步</el-button>
+        </div>
+        <div class="intro">
+            我们的目标是把圆盘从第一根柱子移动到第二根柱子上
+        </div>
+    </div>
+</body>
+<script>
+    let vm=new Vue({
+        el:'#app',
+        data:{
+            level:null,
+            count:0
+        },
+        methods: {
+            handler(){
+                initiateGame(this.level)
+            }
+        },
+    })
+</script>
+<script src="hanoi.min.js"></script>
+</html>
